@@ -4,6 +4,7 @@ import 'react-big-calendar/lib/css/react-big-calendar.css'
 
 import { getMessagesCalendar, localizer } from '../../helpers'
 import { Navbar, CalenderEvent } from '../'
+import { useState } from 'react'
 
 
 
@@ -19,6 +20,8 @@ const events = [{
 }]
 
 export const CalendarPage = () => {
+  const [lasteView, setLasteView] = useState(localStorage.getItem('lastView' || 'week'));
+
   
   const eventsCalendar = ( event, start, end, isSelected ) => {
     // console.log({event, start, end, isSelected});
@@ -31,7 +34,8 @@ export const CalendarPage = () => {
     console.log({click: event})
   }
   const onViewChanche = (event) => {
-    console.log({viewChange: event})
+    localStorage.setItem('lastView', event);
+    setLasteView( event );
   }
   
   return (
@@ -42,6 +46,7 @@ export const CalendarPage = () => {
       culture='es'
       localizer={localizer}
       events={events}
+      defaultView = {lasteView}
       startAccessor="start"
       endAccessor="end"
       style={{ height: 'calc( 100vh - 80px)' }}
@@ -53,7 +58,7 @@ export const CalendarPage = () => {
 
       onDoubleClickEvent = { onDoubleClick }
       onSelectEvent = { onSelect }
-      onvi
+      onView = { onViewChanche}
     />
       
     </>

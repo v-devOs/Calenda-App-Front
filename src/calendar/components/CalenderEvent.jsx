@@ -1,7 +1,7 @@
 import React from 'react'
 
 export const CalenderEvent = ( {event} ) => {
-  const { title, user } = event;
+  const { title , user } = event;
 
   return (
     <>
