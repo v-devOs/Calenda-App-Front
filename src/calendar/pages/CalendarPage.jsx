@@ -8,6 +8,9 @@ import { Navbar, CalenderEvent } from '../'
 
 
 const events = [{
+  user: {
+    name: 'Uriel', 
+  },
   title: 'Cumpleaños del jefe',
   notes: 'Hay que comprar el pastel',
   start: new Date(),
@@ -19,7 +22,16 @@ export const CalendarPage = () => {
   
   const eventsCalendar = ( event, start, end, isSelected ) => {
     // console.log({event, start, end, isSelected});
+  }
 
+  const onDoubleClick = (event) => {
+    console.log({doubleClick: event})
+  }
+  const onSelect = (event) => {
+    console.log({click: event})
+  }
+  const onViewChanche = (event) => {
+    console.log({viewChange: event})
   }
   
   return (
@@ -38,6 +50,10 @@ export const CalendarPage = () => {
       components={{
         event: CalenderEvent
       }}
+
+      onDoubleClickEvent = { onDoubleClick }
+      onSelectEvent = { onSelect }
+      onvi
     />
       
     </>
